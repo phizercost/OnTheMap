@@ -24,10 +24,12 @@ class TabViewController: UITabBarController {
                 self.raiseAlert(title: "ERROR", notification:"Unable to logout")
                 return
             }
-            if result! {
-                self.dismiss(animated: true, completion: nil)
-            } else {
-                self.raiseAlert(title: "ERROR", notification:"Unable to logout")
+            DispatchQueue.main.async {
+                if result! {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    self.raiseAlert(title: "ERROR", notification:"Unable to logout")
+                }
             }
         })
     }
@@ -44,7 +46,11 @@ class TabViewController: UITabBarController {
     @objc private func loadStudentsLocations() {
         Global.shared().fetchStudentsLocation() { (locations, error) in
             DispatchQueue.main.async {
-                StudentLocations.shared.studentLocations = locations!
+                if error == nil {
+                    StudentLocations.shared.studentLocations = locations!
+                } else {
+                    self.raiseAlert(title: "ERROR", notification:(error!.localizedDescription))
+                }
             }
         }
     }

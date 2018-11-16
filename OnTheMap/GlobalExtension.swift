@@ -80,7 +80,7 @@ extension Global {
         request.httpBody = jsonBody.data(using: String.Encoding.utf8)
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             guard (error == nil) else {
-                let userInfo = [NSLocalizedDescriptionKey : error]
+                let userInfo = [NSLocalizedDescriptionKey : error?.localizedDescription]
                 postCompletionHandler(nil, NSError(domain: "globalPOSTMethod", code: 101, userInfo: userInfo as [String : Any]))
                 return
             }

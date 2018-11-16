@@ -41,6 +41,22 @@ class TableViewController: UITableViewController {
             }
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let student = StudentLocations.shared.studentLocations[(indexPath as NSIndexPath).row]
+        let url = student.mediaURL
+        
+        guard !url.isEmpty, UIApplication.shared.canOpenURL(URL(string: url)!) else {
+            self.raiseAlert(title: "ERROR", notification:"Invalid link pressed")
+            return
+        }
+        UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+    }
+    func raiseAlert(title:String, notification:String) {
+        let alert  = UIAlertController(title: title, message: notification, preferredStyle:UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }
 

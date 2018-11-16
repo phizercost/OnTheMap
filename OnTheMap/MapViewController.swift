@@ -60,5 +60,37 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let identifier = "annotation"
+        var view: MKPinAnnotationView
+        
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        
+        return view
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            guard let url = view.annotation?.subtitle!, !url.isEmpty, UIApplication.shared.canOpenURL(URL(string: url)!)  else {
+                self.raiseAlert(title: "ERROR", notification:"Invalid link pressed")
+                return
+            }
+            UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
+        }
+    }
+    func raiseAlert(title:String, notification:String) {
+        let alert  = UIAlertController(title: title, message: notification, preferredStyle:UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 

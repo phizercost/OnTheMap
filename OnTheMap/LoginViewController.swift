@@ -114,7 +114,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.passwordTextField.text = ""
                 self.performSegue(withIdentifier: "showMap", sender: self.loginBtn)
             } else {
-                self.raiseAlert(title: "ERROR", notification: error!)
+                DispatchQueue.main.async {
+                    self.raiseAlert(title: "ERROR", notification: error!)
+                }
             }
         }
         
