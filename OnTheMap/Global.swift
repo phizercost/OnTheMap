@@ -20,11 +20,5 @@ class Global: NSObject {
     var uniqueKey = ""
     var firstName = ""
     var lastName = ""
-    
-    class func shared() -> Global {
-        struct Element {
-            static var shared = Global()
-        }
-        return Element.shared
-    }
+    static let shared = Global()
 }

@@ -12,11 +12,7 @@ class TableViewController: UITableViewController {
     
 
     @IBOutlet weak var grayActivityIndicator: UIActivityIndicatorView!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadStudentsLocations()
@@ -34,7 +30,7 @@ class TableViewController: UITableViewController {
     }
     
     @objc private func loadStudentsLocations() {
-        Global.shared().fetchStudentsLocation() { (locations, error) in
+        Global.shared.fetchStudentsLocation() { (locations, error) in
             DispatchQueue.main.async {
                 StudentLocations.shared.studentLocations = locations!
                 self.tableView.reloadData()
@@ -51,11 +47,6 @@ class TableViewController: UITableViewController {
             return
         }
         UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
-    }
-    func raiseAlert(title:String, notification:String) {
-        let alert  = UIAlertController(title: title, message: notification, preferredStyle:UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
-        self.present(alert, animated: true, completion: nil)
     }
 
 }

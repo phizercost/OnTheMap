@@ -57,7 +57,7 @@ extension Global {
     }
     
     func getUdacityUserInfo(completionHandler:@escaping (_ result: Bool, Error?)->Void) {
-        _ = globalGETMethod(url: Constants.Udacity.userApiURL + "/\(Global.shared().uniqueKey)", getCompletionHandler: {(data, error) in
+        _ = globalGETMethod(url: Constants.Udacity.userApiURL + "/\(Global.shared.uniqueKey)", getCompletionHandler: {(data, error) in
             if let data = data {
                 let range = (5..<data.count)
                 let newData = data.subdata(in: range)
@@ -127,8 +127,8 @@ extension Global {
                 deleteCompletionHandler(false, error! as NSError)
                 return
             }
-            Global.shared().uniqueKey = ""
-            Global.shared().sessionId = ""
+            Global.shared.uniqueKey = ""
+            Global.shared.sessionId = ""
             deleteCompletionHandler(true, nil)
         }
         task.resume()

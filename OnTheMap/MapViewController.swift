@@ -19,7 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         self.grayActivityIndicator.startAnimating()
         self.mapView.alpha = 0.5
-        Global.shared().getUdacityUserInfo() { (data, error)  in
+        Global.shared.getUdacityUserInfo() { (data, error)  in
         }
         mapView.delegate = self
         
@@ -50,7 +50,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @objc private func loadStudentsLocations() {
-        Global.shared().fetchStudentsLocation() { (locations, error) in
+        Global.shared.fetchStudentsLocation() { (locations, error) in
             DispatchQueue.main.async {
                 StudentLocations.shared.studentLocations = locations!
                 self.grayActivityIndicator.stopAnimating()
@@ -86,11 +86,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             UIApplication.shared.open(URL(string: url)!, options: [:], completionHandler: nil)
         }
-    }
-    func raiseAlert(title:String, notification:String) {
-        let alert  = UIAlertController(title: title, message: notification, preferredStyle:UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
-        self.present(alert, animated: true, completion: nil)
     }
 }
 

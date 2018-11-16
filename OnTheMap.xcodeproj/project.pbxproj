@@ -24,6 +24,7 @@
 		02A6163F21998B59002C034F /* UserInfoDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A6163E21998B59002C034F /* UserInfoDetails.swift */; };
 		02A61641219DAD71002C034F /* GlobalExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A61640219DAD71002C034F /* GlobalExtension.swift */; };
 		02A61643219DCC8A002C034F /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A61642219DCC8A002C034F /* UserSession.swift */; };
+		02A61645219EE3A9002C034F /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A61644219EE3A9002C034F /* UIViewControllerExtension.swift */; };
 		02F8A790218B579C0099D071 /* MapPinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F8A78F218B579C0099D071 /* MapPinController.swift */; };
 		02F8A792218B633E0099D071 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F8A791218B633E0099D071 /* Location.swift */; };
 		02F8A794218B85300099D071 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F8A793218B85300099D071 /* Global.swift */; };
@@ -49,6 +50,7 @@
 		02A6163E21998B59002C034F /* UserInfoDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDetails.swift; sourceTree = "<group>"; };
 		02A61640219DAD71002C034F /* GlobalExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalExtension.swift; sourceTree = "<group>"; };
 		02A61642219DCC8A002C034F /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		02A61644219EE3A9002C034F /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		02F8A78F218B579C0099D071 /* MapPinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPinController.swift; sourceTree = "<group>"; };
 		02F8A791218B633E0099D071 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		02F8A793218B85300099D071 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				027BB0BF21120A7B0021CA11 /* TableViewController.swift */,
 				0249CCB7211999C100CEDFBC /* TabViewController.swift */,
 				02528FBF2179D1910048AE9E /* TableViewCell.swift */,
+				02A61644219EE3A9002C034F /* UIViewControllerExtension.swift */,
 				02A6163C219988B4002C034F /* UserInfo.swift */,
 				02A6163E21998B59002C034F /* UserInfoDetails.swift */,
 				027BB0C121120A7B0021CA11 /* Main.storyboard */,
@@ -183,6 +186,7 @@
 			files = (
 				027BB0D021121CFA0021CA11 /* LoginViewController.swift in Sources */,
 				02A61643219DCC8A002C034F /* UserSession.swift in Sources */,
+				02A61645219EE3A9002C034F /* UIViewControllerExtension.swift in Sources */,
 				027BB0C021120A7B0021CA11 /* TableViewController.swift in Sources */,
 				0249CCB62119980500CEDFBC /* StudentLocations.swift in Sources */,
 				02528FC02179D1910048AE9E /* TableViewCell.swift in Sources */,

@@ -62,20 +62,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-    func raiseAlert(title:String, notification:String) {
-        let alert  = UIAlertController(title: title, message: notification, preferredStyle:UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func initializeTextField(_ textField: UITextField, _ withText: String) {
         textField.delegate = self
         textField.textAlignment = .left
@@ -108,7 +101,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func login(_ sender: Any) {
-        Global.shared().loginFunction(email: emailTextField.text! , password: passwordTextField.text!) { (result, error) in
+        Global.shared.loginFunction(email: emailTextField.text! , password: passwordTextField.text!) { (result, error) in
             if result {
                 self.emailTextField.text = ""
                 self.passwordTextField.text = ""

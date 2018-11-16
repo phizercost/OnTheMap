@@ -49,18 +49,12 @@ class MapPinController: UIViewController, MKMapViewDelegate {
         return nil
     }
     
-    func raiseAlert(title:String, notification:String) {
-        let alert  = UIAlertController(title: title, message: notification, preferredStyle:UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     @IBAction func finish(_ sender: Any) {
         
         let json = "{\"uniqueKey\": \"\(studentLocation!.uniqueKey)\", \"firstName\": \"\(studentLocation!.firstName)\", \"lastName\": \"\(studentLocation!.firstName)\",\"mapString\": \"\(studentLocation!.mapString)\", \"mediaURL\": \"\(studentLocation!.mediaURL)\",\"latitude\": \(studentLocation!.latitude), \"longitude\": \(studentLocation!.longitude)}"
         let url = Constants.Udacity.studentPostURL
         
-        _ = Global.shared().globalPOSTMethod(jsonBody: json, url: url, postCompletionHandler: {(data, error) in
+        _ = Global.shared.globalPOSTMethod(jsonBody: json, url: url, postCompletionHandler: {(data, error) in
             guard (error == nil) else {
                 self.raiseAlert(title: "ERROR", notification:"Unable to post student location")
                 return

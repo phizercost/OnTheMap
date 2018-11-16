@@ -19,7 +19,7 @@ class TabViewController: UITabBarController {
     
     @IBAction func logout(_ sender: Any) {
         
-        _ = Global.shared().globalDELETEMethod(deleteCompletionHandler: {(result, error) in
+        _ = Global.shared.globalDELETEMethod(deleteCompletionHandler: {(result, error) in
             guard (error == nil) else {
                 self.raiseAlert(title: "ERROR", notification:"Unable to logout")
                 return
@@ -44,7 +44,7 @@ class TabViewController: UITabBarController {
     }
     
     @objc private func loadStudentsLocations() {
-        Global.shared().fetchStudentsLocation() { (locations, error) in
+        Global.shared.fetchStudentsLocation() { (locations, error) in
             DispatchQueue.main.async {
                 if error == nil {
                     StudentLocations.shared.studentLocations = locations!
@@ -53,11 +53,5 @@ class TabViewController: UITabBarController {
                 }
             }
         }
-    }
-    
-    func raiseAlert(title:String, notification:String) {
-        let alert  = UIAlertController(title: title, message: notification, preferredStyle:UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
-        self.present(alert, animated: true, completion: nil)
     }
 }

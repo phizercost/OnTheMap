@@ -66,8 +66,8 @@ class LocationViewController: UIViewController {
     
     private func fetchStudentLocation(_ coordinate: CLLocationCoordinate2D) -> StudentLocation {
         var studentLocation = [
-            "uniqueKey": Global.shared().uniqueKey,
-            "firstName": Global.shared().firstName,
+            "uniqueKey": Global.shared.uniqueKey as AnyObject,
+            "firstName": Global.shared.firstName,
             "lastName": "",
             "mapString": locationTxt.text!,
             "mediaURL": websiteTxt.text!,
